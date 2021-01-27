@@ -20,6 +20,7 @@ impl State {
     /// Initialize Poly1305 [`State`] with the given key
     #[inline]
     pub(crate) fn new(key: &Key) -> State {
+        panic!("qqqq");
         let (token, avx2_present) = avx2_cpuid::init_get();
 
         let inner = if avx2_present {
