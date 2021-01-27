@@ -109,8 +109,9 @@ impl NewUniversalHash for Poly1305 {
 
     /// Initialize Poly1305 with the given key
     fn new(key: &Key) -> Poly1305 {
-        panic!("mmmm reached");
+        // panic!("mmmm reached");
         let state = State::new(key);
+        panic!("pppp");
         Poly1305 { state }
     }
 }
