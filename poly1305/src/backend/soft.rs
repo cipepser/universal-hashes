@@ -25,7 +25,7 @@ pub(crate) struct State {
 impl State {
     /// Initialize Poly1305 [`State`] with the given key
     pub(crate) fn new(key: &Key) -> State {
-        // panic!("oooo unreduced");
+        panic!("oooo unreduced");
         let mut poly = State::default();
         // panic!("nnnn unreduced");
 
