@@ -21,19 +21,23 @@ impl State {
     #[inline]
     pub(crate) fn new(key: &Key) -> State {
         // panic!("qqqq reached");
-        let (token, avx2_present) = avx2_cpuid::init_get();
+        // let (token, avx2_present) = avx2_cpuid::init_get();
 
-        let inner = if avx2_present {
-            panic!("rrrr");
-            Inner {
-                avx2: ManuallyDrop::new(backend::avx2::State::new(key)),
-            }
-        } else {
-            panic!("ssss");
-            Inner {
-                soft: ManuallyDrop::new(backend::soft::State::new(key)),
-            }
+        // let inner = if avx2_present {
+        //     // panic!("rrrr unreached");
+        //     Inner {
+        //         avx2: ManuallyDrop::new(backend::avx2::State::new(key)),
+        //     }
+        // } else {
+        //     // panic!("ssss unreached");
+        //     Inner {
+        //         soft: ManuallyDrop::new(backend::soft::State::new(key)),
+        //     }
+        // };
+        let inner = Inner {
+            soft: ManuallyDrop::new(backend::soft::State::new(key)),
         };
+        let token = avx2_cpuid::InitToken(());
 
         Self { inner, token }
     }
