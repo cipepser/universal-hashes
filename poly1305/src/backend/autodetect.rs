@@ -20,8 +20,8 @@ impl State {
     /// Initialize Poly1305 [`State`] with the given key
     #[inline]
     pub(crate) fn new(key: &Key) -> State {
-        panic!("qqqq reached");
-        let (token, _avx2_present) = avx2_cpuid::init_get();
+        // panic!("qqqq reached");
+        // let (token, _avx2_present) = avx2_cpuid::init_get();
 
         // let inner = if avx2_present {
         //     // panic!("rrrr unreached");
@@ -37,7 +37,7 @@ impl State {
         let inner = Inner {
             soft: ManuallyDrop::new(backend::soft::State::new(key)),
         };
-        // let token = avx2_cpuid::InitToken(());
+        let token = avx2_cpuid::init();
 
         Self { inner, token }
     }
