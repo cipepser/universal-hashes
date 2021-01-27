@@ -26,6 +26,7 @@ impl State {
     /// Initialize Poly1305 [`State`] with the given key
     pub(crate) fn new(key: &Key) -> State {
         let mut poly = State::default();
+        panic!("nnnn");
 
         // r &= 0xffffffc0ffffffc0ffffffc0fffffff
         poly.r[0] = (u32::from_le_bytes(key[0..4].try_into().unwrap())) & 0x3ff_ffff;
